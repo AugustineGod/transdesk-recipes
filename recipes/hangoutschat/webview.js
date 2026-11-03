@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   // if the user is on googlechat landing page, go to the login page.
   if (
     location.hostname === 'workspace.google.com' &&
@@ -39,13 +39,13 @@ module.exports = Ferdium => {
       indirectCount = Number(indirectCountSelector.textContent);
     }
 
-    // set Ferdium badge
-    Ferdium.setBadge(directCount, indirectCount);
+    // set Transdesk badge
+    Transdesk.setBadge(directCount, indirectCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 
   document.addEventListener('click', e => {
     // @ts-expect-error

@@ -37,7 +37,7 @@ function isBadgeInMutedChannel(badgeElement) {
   );
 }
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   let unreadMessagesAtLastActivity = 0;
   let unreadHighlightedMessagesAtLastActivity = 0;
 
@@ -59,7 +59,7 @@ module.exports = Ferdium => {
       }
 
       if (directElement.textContent.length > 0) {
-        direct += Ferdium.safeParseInt(directElement.textContent);
+        direct += Transdesk.safeParseInt(directElement.textContent);
       }
     }
 
@@ -112,14 +112,14 @@ module.exports = Ferdium => {
       }
     }
 
-    Ferdium.setBadge(direct, indirect);
+    Transdesk.setBadge(direct, indirect);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 
   // We need to monkey patch ServierWorker.postMessage so that notifications
   // will work, and that needs to be done without context isolation:
-  Ferdium.injectJSUnsafe(_path.default.join(__dirname, 'webview-unsafe.js'));
+  Transdesk.injectJSUnsafe(_path.default.join(__dirname, 'webview-unsafe.js'));
 };

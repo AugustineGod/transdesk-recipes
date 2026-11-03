@@ -4,21 +4,21 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     let unreadCount = 0;
     $.each(
       $('[data-qa-has-unreads]'),
       (idx, item) =>
-        (unreadCount += Ferdium.safeParseInt(
+        (unreadCount += Transdesk.safeParseInt(
           item.attributes['data-qa-has-unreads'].value,
         )),
     );
 
-    Ferdium.setBadge(unreadCount);
+    Transdesk.setBadge(unreadCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'whitemode.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'whitemode.css'));
 };

@@ -4,19 +4,19 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   function getMessages() {
     let direct = 0;
     let indirect = 0;
-    const FerdiumData = document.querySelector('#FerdiumMessages').dataset;
-    if (FerdiumData) {
-      direct = FerdiumData.direct;
-      indirect = FerdiumData.indirect;
+    const TransdeskData = document.querySelector('#TransdeskMessages').dataset;
+    if (TransdeskData) {
+      direct = TransdeskData.direct;
+      indirect = TransdeskData.indirect;
     }
 
-    Ferdium.setBadge(direct, indirect);
+    Transdesk.setBadge(direct, indirect);
   }
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
-  Ferdium.loop(getMessages);
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.loop(getMessages);
 };

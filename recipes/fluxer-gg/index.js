@@ -1,8 +1,8 @@
-module.exports = Ferdium =>
-  class Fluxer extends Ferdium {
+module.exports = Transdesk =>
+  class Fluxer extends Transdesk {
     overrideUserAgent() {
       return window.navigator.userAgent.replace(
-        /(Ferdium|Electron)\/\S+ \([^)]+\)/g,
+        /(Transdesk|Electron)\/\S+ \([^)]+\)/g,
         '',
       );
     }

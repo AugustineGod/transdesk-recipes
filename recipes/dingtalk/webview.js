@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   let checkIsRun = false;
   const checkHeightAction = () => {
     checkIsRun = true;
@@ -34,10 +34,10 @@ module.exports = Ferdium => {
 
   const getMessages = () => {
     const x = document.querySelectorAll('.unread-num em.ng-binding');
-    Ferdium.setBadge(x.length > 0 ? x[0].textContent : 0);
+    Transdesk.setBadge(x.length > 0 ? x[0].textContent : 0);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'style.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'style.css'));
 };

@@ -4,16 +4,16 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
-  Ferdium.loop(() => {
+module.exports = Transdesk => {
+  Transdesk.loop(() => {
     const e = document.querySelector(
       '.app-toggle-button[aria-label="Mail"] > .app-spaces__badge',
     );
     const direct = e ? +e.textContent : 0;
-    Ferdium.setBadge(direct);
+    Transdesk.setBadge(direct);
   });
 
-  Ferdium.handleDarkMode(enabled => {
+  Transdesk.handleDarkMode(enabled => {
     const button = document.querySelector('button.theme-toggle');
     if (!button) {
       return;
@@ -27,5 +27,5 @@ module.exports = Ferdium => {
     }
   });
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

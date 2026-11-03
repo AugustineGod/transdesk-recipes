@@ -4,19 +4,19 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     let indirectCount = 0;
     const badge = document.querySelector('#numNotifs2');
 
     if (badge && badge.textContent) {
-      indirectCount = Ferdium.safeParseInt(badge.textContent);
+      indirectCount = Transdesk.safeParseInt(badge.textContent);
     }
 
-    Ferdium.setBadge(0, indirectCount);
+    Transdesk.setBadge(0, indirectCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

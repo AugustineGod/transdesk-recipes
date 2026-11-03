@@ -1,18 +1,18 @@
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const safeBadgeValue = text =>
-    Ferdium.safeParseInt((text || '').replace(/\D/g, '')) || 0;
+    Transdesk.safeParseInt((text || '').replace(/\D/g, '')) || 0;
 
   const getExplicitBadge = () => {
-    const badgeNode = document.querySelector('[data-ferdium-badge]');
+    const badgeNode = document.querySelector('[data-transdesk-badge]');
     if (!badgeNode) return 0;
 
-    const value = badgeNode.dataset.ferdiumBadge || badgeNode.textContent;
+    const value = badgeNode.dataset.transdeskBadge || badgeNode.textContent;
     return safeBadgeValue(value);
   };
 
   const getMessages = () => {
-    Ferdium.setBadge(getExplicitBadge(), 0);
+    Transdesk.setBadge(getExplicitBadge(), 0);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 };

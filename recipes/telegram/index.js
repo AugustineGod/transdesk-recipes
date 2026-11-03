@@ -9,8 +9,8 @@ function instrumenEnvironment(webview) {
     })();
   `);
 }
-module.exports = Ferdium =>
-  class Telegram extends Ferdium {
+module.exports = Transdesk =>
+  class Telegram extends Transdesk {
     // https://www.electronjs.org/docs/latest/api/webview-tag/#dom-events
     get events() {
       return {

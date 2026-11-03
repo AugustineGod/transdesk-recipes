@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     // get all message badges
     const allBadges = document.querySelectorAll('.activity-indicator');
@@ -22,11 +22,11 @@ module.exports = Ferdium => {
       }
     }
 
-    // set Ferdium badge
-    Ferdium.setBadge(directCount, indirectCount);
+    // set Transdesk badge
+    Transdesk.setBadge(directCount, indirectCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

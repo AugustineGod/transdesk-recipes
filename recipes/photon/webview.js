@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   let count = 0;
 
   const getMessages = async () => {
@@ -31,10 +31,10 @@ module.exports = Ferdium => {
     // parse response
     const { replies, mentions, private_messages } = await response.json();
 
-    Ferdium.setBadge(private_messages + replies, mentions);
+    Transdesk.setBadge(private_messages + replies, mentions);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

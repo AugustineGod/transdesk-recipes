@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     let directCount = 0;
     let indirectCount = 0;
@@ -16,7 +16,7 @@ module.exports = Ferdium => {
       const avatarImage = item.querySelector('img.img');
 
       if (reddot) {
-        count = Ferdium.safeParseInt(reddot.textContent);
+        count = Transdesk.safeParseInt(reddot.textContent);
       }
 
       if (
@@ -29,10 +29,10 @@ module.exports = Ferdium => {
       }
     });
 
-    Ferdium.setBadge(directCount, indirectCount);
+    Transdesk.setBadge(directCount, indirectCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

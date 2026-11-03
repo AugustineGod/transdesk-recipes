@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const notificationsElement = document.querySelectorAll(
       '.list-group-item .badge.rounded-pill',
@@ -17,8 +17,8 @@ module.exports = Ferdium => {
       notificationsElement.classList.contains('bg-primary')
         ? Number.parseInt(notificationText)
         : 0;
-    Ferdium.setBadge(notificationCount);
+    Transdesk.setBadge(notificationCount);
   };
-  Ferdium.loop(getMessages);
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.loop(getMessages);
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

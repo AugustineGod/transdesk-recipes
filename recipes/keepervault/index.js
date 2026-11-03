@@ -1,1 +1,1 @@
-module.exports = Ferdium => class KeeperVault extends Ferdium {};
+module.exports = Transdesk => class KeeperVault extends Transdesk {};

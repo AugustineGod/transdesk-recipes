@@ -4,19 +4,19 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
-    const unreadPrivateMessages = Ferdium.safeParseInt(
+    const unreadPrivateMessages = Transdesk.safeParseInt(
       $('.messages .unread-meeps').text(),
     );
-    const unreadGroupMessages = Ferdium.safeParseInt(
+    const unreadGroupMessages = Transdesk.safeParseInt(
       $('.today .unread-meeps').text(),
     );
 
-    Ferdium.setBadge(unreadPrivateMessages + unreadGroupMessages);
+    Transdesk.setBadge(unreadPrivateMessages + unreadGroupMessages);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

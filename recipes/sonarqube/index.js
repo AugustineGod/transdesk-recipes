@@ -1,1 +1,1 @@
-module.exports = Ferdium => class SonarQube extends Ferdium {};
+module.exports = Transdesk => class SonarQube extends Transdesk {};

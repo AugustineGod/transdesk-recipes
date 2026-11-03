@@ -1,12 +1,12 @@
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const messageBadge = document.querySelector('#mat-badge-content-0');
-    const parsedCount = Ferdium.safeParseInt(messageBadge.textContent);
+    const parsedCount = Transdesk.safeParseInt(messageBadge.textContent);
     if (parsedCount) {
-      Ferdium.setBadge(parsedCount, 0);
+      Transdesk.setBadge(parsedCount, 0);
     } else {
-      Ferdium.setBadge(0, 0);
+      Transdesk.setBadge(0, 0);
     }
   };
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 };

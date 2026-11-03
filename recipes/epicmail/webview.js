@@ -1,6 +1,6 @@
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const safeBadgeValue = text =>
-    Ferdium.safeParseInt((text || '').replace(/\D/g, '')) || 0;
+    Transdesk.safeParseInt((text || '').replace(/\D/g, '')) || 0;
 
   const findUnifiedInboxBadge = () => {
     const buttons = document.querySelectorAll(
@@ -29,8 +29,8 @@ module.exports = Ferdium => {
 
   const getMessages = () => {
     const direct = findUnifiedInboxBadge() || sumAccountBadges();
-    Ferdium.setBadge(direct, 0);
+    Transdesk.setBadge(direct, 0);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 };

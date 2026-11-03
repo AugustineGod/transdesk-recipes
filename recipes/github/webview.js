@@ -4,22 +4,22 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const newCountMatch = document
       .querySelector('a.h6[href^="/notifications?query="]')
       ?.textContent?.match(/\d+/);
-    Ferdium.setBadge(
-      Ferdium.safeParseInt(
+    Transdesk.setBadge(
+      Transdesk.safeParseInt(
         document.querySelector('li[data-item-id="inbox"] .Counter')
           ?.textContent,
-      ) + Ferdium.safeParseInt(newCountMatch ? newCountMatch[0] : 0),
+      ) + Transdesk.safeParseInt(newCountMatch ? newCountMatch[0] : 0),
       document.querySelectorAll(
         '#AppHeader-notifications-button.AppHeader-button--hasIndicator, ' +
           '[data-target="notification-indicator.badge"]:not([hidden])',
       ).length,
     );
   };
-  Ferdium.loop(getMessages);
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.loop(getMessages);
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

@@ -4,23 +4,23 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     // get unread messages
     let directCount = 0;
     for (const node of document.querySelectorAll('div.unread-indicator')) {
-      directCount += Ferdium.safeParseInt(node.textContent);
+      directCount += Transdesk.safeParseInt(node.textContent);
     }
 
     const channelMentionCount =
       document.querySelectorAll('.mention-indicator').length;
 
-    // set Ferdium badge
-    Ferdium.setBadge(directCount, channelMentionCount);
+    // set Transdesk badge
+    Transdesk.setBadge(directCount, channelMentionCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
   // Hide download message
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

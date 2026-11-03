@@ -1,3 +1,3 @@
-// just pass through ferdium
+// just pass through transdesk
 
-module.exports = Ferdium => Ferdium;
+module.exports = Transdesk => Transdesk;

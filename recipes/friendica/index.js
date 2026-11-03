@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class Friendica extends Ferdium {
+module.exports = Transdesk =>
+  class Friendica extends Transdesk {
     async validateUrl(url) {
       try {
         const resp = await window.fetch(`${url}/nodeinfo/2.0`, {

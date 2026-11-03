@@ -4,20 +4,20 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   function getNotifications() {
     let unreadNotifications = 0;
     for (const notificationCounterElement of document.querySelectorAll(
       '.notification__count',
     )) {
-      unreadNotifications += Ferdium.safeParseInt(
+      unreadNotifications += Transdesk.safeParseInt(
         notificationCounterElement.textContent,
       );
     }
 
-    Ferdium.setBadge(unreadNotifications);
+    Transdesk.setBadge(unreadNotifications);
   }
-  Ferdium.loop(getNotifications);
+  Transdesk.loop(getNotifications);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

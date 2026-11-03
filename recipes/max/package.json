@@ -7,5 +7,5 @@
     "serviceURL": "https://web.max.ru/",
     "hasNotificationSound": true
   },
-  "defaultIcon": "https://cdn.jsdelivr.net/gh/ferdium/ferdium-recipes@main/recipes/max/icon.svg"
+  "defaultIcon": "https://cdn.jsdelivr.net/gh/transdesk/transdesk-recipes@main/recipes/max/icon.svg"
 }

@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     let direct = 0;
 
@@ -30,7 +30,7 @@ module.exports = Ferdium => {
             ''
           ).trim();
           const m = txt.match(/(\d+)/);
-          if (m) direct += Ferdium.safeParseInt(m[1]);
+          if (m) direct += Transdesk.safeParseInt(m[1]);
         }
       }
 
@@ -48,7 +48,7 @@ module.exports = Ferdium => {
               t.length <= 3 &&
               c.children.length === 0
             ) {
-              direct += Ferdium.safeParseInt(t);
+              direct += Transdesk.safeParseInt(t);
               break; // one badge per link
             }
           }
@@ -66,16 +66,16 @@ module.exports = Ferdium => {
       // Title fallback: bskyTitle prefixes "(3) " when unread — src/lib/strings/headings.ts
       if (direct === 0) {
         const m = document.title.match(/^\((\d+)\+?\)/);
-        if (m) direct = Ferdium.safeParseInt(m[1]);
+        if (m) direct = Transdesk.safeParseInt(m[1]);
       }
     } catch (error) {
       console.error('Bluesky getMessages error:', error);
     }
 
-    Ferdium.setBadge(direct);
+    Transdesk.setBadge(direct);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

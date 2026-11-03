@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     let messages = 0;
 
@@ -19,18 +19,18 @@ module.exports = Ferdium => {
         if (obj.classList.contains('system')) {
           // Only count the Inbox system folder and ignore Archive, Trash, Drafts, Spam, Sent
           if (obj.classList.contains('i-am-inbox')) {
-            messages += Ferdium.safeParseInt(countText);
+            messages += Transdesk.safeParseInt(countText);
           }
         } else {
-          messages += Ferdium.safeParseInt(countText);
+          messages += Transdesk.safeParseInt(countText);
         }
       }
     }
 
-    Ferdium.setBadge(messages);
+    Transdesk.setBadge(messages);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

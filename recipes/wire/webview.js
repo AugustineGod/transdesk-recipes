@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     let direct = 0;
     let indirect = 0;
@@ -15,7 +15,7 @@ module.exports = Ferdium => {
     );
     if (conversationElems) {
       for (const conversationElem of conversationElems) {
-        direct += Ferdium.safeParseInt(conversationElem.textContent);
+        direct += Transdesk.safeParseInt(conversationElem.textContent);
       }
     }
 
@@ -27,7 +27,7 @@ module.exports = Ferdium => {
       const matches =
         pendingElem.textContent && pendingElem.textContent.match(/^([1-9]\d*)/);
       if (matches && matches.length > 1) {
-        indirect += Ferdium.safeParseInt(matches[1]);
+        indirect += Transdesk.safeParseInt(matches[1]);
       }
     }
 
@@ -38,10 +38,10 @@ module.exports = Ferdium => {
     // 	direct = matches[1];
     // }
 
-    Ferdium.setBadge(direct, indirect);
+    Transdesk.setBadge(direct, indirect);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

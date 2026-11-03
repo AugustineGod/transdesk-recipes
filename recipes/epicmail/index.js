@@ -1,1 +1,1 @@
-module.exports = Ferdium => class EpicMail extends Ferdium {};
+module.exports = Transdesk => class EpicMail extends Transdesk {};

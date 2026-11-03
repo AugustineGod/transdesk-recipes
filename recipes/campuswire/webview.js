@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     let count = document.querySelectorAll(
       '._5fx8:not(._569x),._1ht3:not(._569x)',
@@ -12,13 +12,13 @@ module.exports = Ferdium => {
     const messageRequestsElement = document.querySelector('._5nxf');
 
     if (messageRequestsElement) {
-      count += Ferdium.safeParseInt(messageRequestsElement.textContent);
+      count += Transdesk.safeParseInt(messageRequestsElement.textContent);
     }
 
-    Ferdium.setBadge(count);
+    Transdesk.setBadge(count);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
   localStorage.setItem(
     '_cs_desktopNotifsEnabled',
@@ -28,8 +28,8 @@ module.exports = Ferdium => {
     }),
   );
 
-  if (typeof Ferdium.onNotify === 'function') {
-    Ferdium.onNotify(notification => {
+  if (typeof Transdesk.onNotify === 'function') {
+    Transdesk.onNotify(notification => {
       if (typeof notification.title !== 'string') {
         notification.title =
           ((notification.title.props || {}).content || [])[0] || 'Campuswire';
@@ -45,5 +45,5 @@ module.exports = Ferdium => {
     });
   }
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'css', 'franz.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'css', 'franz.css'));
 };

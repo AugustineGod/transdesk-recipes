@@ -12,7 +12,7 @@ setTimeout(() => {
   }
 }, 1000);
 
-module.exports = (Ferdium, settings) => {
+module.exports = (Transdesk, settings) => {
   const getMessages = () => {
     const elements = document.querySelectorAll('.CxUIE, .unread');
     let count = 0;
@@ -23,11 +23,11 @@ module.exports = (Ferdium, settings) => {
       }
     }
 
-    Ferdium.setBadge(count);
+    Transdesk.setBadge(count);
   };
 
   window.addEventListener('beforeunload', async () => {
-    Ferdium.clearStorageData(settings.id, {
+    Transdesk.clearStorageData(settings.id, {
       storages: [
         'appcache',
         'serviceworkers',
@@ -36,10 +36,10 @@ module.exports = (Ferdium, settings) => {
         'indexdb',
       ],
     });
-    Ferdium.releaseServiceWorkers();
+    Transdesk.releaseServiceWorkers();
   });
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

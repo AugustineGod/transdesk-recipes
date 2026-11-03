@@ -1,8 +1,8 @@
-module.exports = Ferdium =>
-  class Messenger extends Ferdium {
+module.exports = Transdesk =>
+  class Messenger extends Transdesk {
     overrideUserAgent() {
       return window.navigator.userAgent
-        .replaceAll(/(Ferdium|Electron)\/\S+ \([^)]+\)/g, '')
+        .replaceAll(/(Transdesk|Electron)\/\S+ \([^)]+\)/g, '')
         .trim();
     }
   };

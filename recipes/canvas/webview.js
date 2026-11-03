@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     let direct = 0;
 
@@ -12,13 +12,13 @@ module.exports = Ferdium => {
       '[id=global_nav_conversations_link]',
     );
     if (MessageElement) {
-      direct += Ferdium.safeParseInt(MessageElement.textContent);
+      direct += Transdesk.safeParseInt(MessageElement.textContent);
     }
 
-    Ferdium.setBadge(direct);
+    Transdesk.setBadge(direct);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

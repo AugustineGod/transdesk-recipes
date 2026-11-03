@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class PushBullet extends Ferdium {
+module.exports = Transdesk =>
+  class PushBullet extends Transdesk {
     constructor(...args) {
       let _temp;
 

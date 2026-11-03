@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class Grammarly extends Ferdium {
+module.exports = Transdesk =>
+  class Grammarly extends Transdesk {
     async validateUrl() {
       return true;
     }

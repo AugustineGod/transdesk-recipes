@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
   }
 });
 
-module.exports = (Ferdium, settings) => {
+module.exports = (Transdesk, settings) => {
   const getMessages = () => {
     const elements = document.querySelectorAll('.CxUIE, .unread');
     let count = 0;
@@ -23,14 +23,14 @@ module.exports = (Ferdium, settings) => {
       }
     }
 
-    Ferdium.setBadge(count);
+    Transdesk.setBadge(count);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
   window.addEventListener('beforeunload', async () => {
-    Ferdium.clearStorageData(settings.id, { storages: ['serviceworkers'] });
+    Transdesk.clearStorageData(settings.id, { storages: ['serviceworkers'] });
   });
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

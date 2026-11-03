@@ -4,18 +4,18 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const count = sel =>
-      Ferdium.safeParseInt((document.querySelector(sel) || {}).textContent);
+      Transdesk.safeParseInt((document.querySelector(sel) || {}).textContent);
 
     const directCount = count('#mail-update');
     const indirectCount = count('#notify-update') + count('#intro-update');
 
-    Ferdium.setBadge(directCount, indirectCount);
+    Transdesk.setBadge(directCount, indirectCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class RocketChat extends Ferdium {
+module.exports = Transdesk =>
+  class RocketChat extends Transdesk {
     async validateUrl(url) {
       try {
         const resp = await window.fetch(url, {

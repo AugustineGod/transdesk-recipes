@@ -4,16 +4,16 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     $.get('/api/_/tickets?filter=unresolved', data => {
-      Ferdium.setBadge(data.tickets.length);
+      Transdesk.setBadge(data.tickets.length);
     });
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 
   /* block popups (prevents freshconnect from opening in a new window) */
   window.open = function (url, name) {

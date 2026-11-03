@@ -4106,7 +4106,7 @@ try {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(
       'The following recipes should have their version bumped: ' +
       Object.keys(notBumpedUpRecipes).join(', ') +
-        '. Please check the contributing guide: https://github.com/ferdium/ferdium-recipes/blob/main/docs/updating.md' +
+        '. Please check the contributing guide: https://github.com/AugustineGod/transdesk-recipes/blob/main/docs/updating.md' +
         '\n' +
         JSON.stringify(notBumpedUpRecipes, undefined, 2),
     );

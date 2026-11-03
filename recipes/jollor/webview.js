@@ -4,15 +4,15 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const count = document.querySelector(
       '.user-menu-message-item-count',
     ).textContent;
-    Ferdium.setBadge(count);
+    Transdesk.setBadge(count);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'css', 'franz.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'css', 'franz.css'));
 };

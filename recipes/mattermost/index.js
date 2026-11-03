@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class Mattermost extends Ferdium {
+module.exports = Transdesk =>
+  class Mattermost extends Transdesk {
     async validateUrl(url) {
       try {
         const resp = await window.fetch(url, {

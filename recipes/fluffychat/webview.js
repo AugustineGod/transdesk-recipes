@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const DB_NAME = 'FluffyChat web';
     const STORE_NAME = 'box_rooms';
@@ -33,33 +33,33 @@ module.exports = Ferdium => {
                * According to app settings, this field should count @mentions but doesn't
                **/
               // if (room.highlight_count && room.highlight_count > 0) {
-              //   highlightCount += Ferdium.safeParseInt(room.highlight_count);
+              //   highlightCount += Transdesk.safeParseInt(room.highlight_count);
               //   highlightCountRooms += 1;
               // }
 
               if (room.notification_count && room.notification_count > 0) {
-                notificationCount += Ferdium.safeParseInt(
+                notificationCount += Transdesk.safeParseInt(
                   room.notification_count,
                 );
                 notificationCountRooms += 1;
               }
             }
 
-            // Ferdium.setBadge(highlightCount, notificationCount);
+            // Transdesk.setBadge(highlightCount, notificationCount);
 
             /**
-             * IMPORTANT: Because the hightlight_count (Ferdium equivalent: directMessages) is broken
-             * this uses Ferdium.setBadge(perRoomNotifications, perMessageNotifications) to simulate how
+             * IMPORTANT: Because the hightlight_count (Transdesk equivalent: directMessages) is broken
+             * this uses Transdesk.setBadge(perRoomNotifications, perMessageNotifications) to simulate how
              * FluffyChat Web shows it's badges and allow the user to get either room count or message count.
              **/
-            Ferdium.setBadge(notificationCountRooms, notificationCount);
+            Transdesk.setBadge(notificationCountRooms, notificationCount);
 
             /**
              * TODO: In the future there could be a toggle available under
              * "Settings > Unread message badges" to allow the user
              * to opt for "Count every room / chat only once"
              **/
-            // Ferdium.setBadge(highlightCountRooms, notificationCountRooms);
+            // Transdesk.setBadge(highlightCountRooms, notificationCountRooms);
           };
         }
       } catch {
@@ -70,7 +70,7 @@ module.exports = Ferdium => {
     };
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

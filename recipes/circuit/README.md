@@ -1,3 +1,3 @@
-# Circuit EU for Ferdium
+# Circuit EU for Transdesk
 
-Unofficial Ferdium recipe for [Circuit by Atos Unify](https://eu.yourcircuit.com/)
+Unofficial Transdesk recipe for [Circuit by Atos Unify](https://eu.yourcircuit.com/)

@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class Wafrn extends Ferdium {
+module.exports = Transdesk =>
+  class Wafrn extends Transdesk {
     async validateUrl(url) {
       try {
         const resp = await window.fetch(`${url}/api/`);

@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const elements = document.querySelectorAll('.CxUIE, .unread');
     let count = 0;
@@ -15,13 +15,13 @@ module.exports = Ferdium => {
       }
     }
 
-    // set Ferdium badge
-    Ferdium.setBadge(count);
+    // set Transdesk badge
+    Transdesk.setBadge(count);
   };
 
-  // check for new messages every second and update Ferdium badge
-  Ferdium.loop(getMessages);
+  // check for new messages every second and update Transdesk badge
+  Transdesk.loop(getMessages);
 
-  // inject Ferdium.css stylesheet
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  // inject Transdesk.css stylesheet
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

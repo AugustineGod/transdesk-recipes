@@ -4,18 +4,18 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const unreadSpan = document.querySelector(
       'span.flag-count.message-count.unread-count',
     );
     let directCount = 0;
     if (unreadSpan) {
-      directCount = Ferdium.safeParseInt(unreadSpan.textContent);
+      directCount = Transdesk.safeParseInt(unreadSpan.textContent);
     }
-    Ferdium.setBadge(directCount);
+    Transdesk.setBadge(directCount);
   };
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

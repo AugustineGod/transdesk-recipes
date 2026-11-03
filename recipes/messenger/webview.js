@@ -14,7 +14,7 @@ function hideInstallMessage() {
   }
 }
 
-module.exports = (Ferdium, settings) => {
+module.exports = (Transdesk, settings) => {
   const getMessages = () => {
     let count = 0;
 
@@ -47,7 +47,7 @@ module.exports = (Ferdium, settings) => {
           newMessengerUI = true;
           const match = label.match(/(\d+)/g);
           if (match) {
-            newUICount += Ferdium.safeParseInt(match[0]);
+            newUICount += Transdesk.safeParseInt(match[0]);
           }
         }
       }
@@ -63,7 +63,7 @@ module.exports = (Ferdium, settings) => {
           if (label && /unread/i.test(label) && /(\d+)/.test(label)) {
             newMessengerUI = true;
             const m = label.match(/(\d+)/g);
-            if (m) newUICount += Ferdium.safeParseInt(m[0]);
+            if (m) newUICount += Transdesk.safeParseInt(m[0]);
           }
         }
       }
@@ -150,7 +150,7 @@ module.exports = (Ferdium, settings) => {
         if (count === 0) {
           const titleMatch = document.title.match(/^\((\d+)\)/);
           if (titleMatch) {
-            count = Ferdium.safeParseInt(titleMatch[1]);
+            count = Transdesk.safeParseInt(titleMatch[1]);
           }
         }
 
@@ -165,7 +165,7 @@ module.exports = (Ferdium, settings) => {
             messageRequestsElement.textContent ||
             messageRequestsElement.getAttribute('aria-label') ||
             '';
-          const req = Ferdium.safeParseInt(txt);
+          const req = Transdesk.safeParseInt(txt);
           if (!Number.isNaN(req) && req > 0) count += req;
         }
       }
@@ -174,7 +174,7 @@ module.exports = (Ferdium, settings) => {
       console.error('Messenger getMessages error:', error);
     }
 
-    Ferdium.setBadge(count);
+    Transdesk.setBadge(count);
   };
 
   const loopRoutine = () => {
@@ -182,9 +182,9 @@ module.exports = (Ferdium, settings) => {
     hideInstallMessage();
   };
 
-  Ferdium.loop(loopRoutine);
+  Transdesk.loop(loopRoutine);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 
   localStorage.setItem(
     '_cs_desktopNotifsEnabled',
@@ -194,8 +194,8 @@ module.exports = (Ferdium, settings) => {
     }),
   );
 
-  if (typeof Ferdium.onNotify === 'function') {
-    Ferdium.onNotify(notification => {
+  if (typeof Transdesk.onNotify === 'function') {
+    Transdesk.onNotify(notification => {
       if (typeof notification.title !== 'string') {
         notification.title =
           ((notification.title.props || {}).content || [])[0] || 'Messenger';
@@ -226,10 +226,10 @@ module.exports = (Ferdium, settings) => {
         event.stopPropagation();
 
         if (url.includes('fbsbx.com') || settings.trapLinkClicks === true) {
-          // 'fbsbx.com is Facebook file hosting service. Always open file downloads in Ferdium.
+          // 'fbsbx.com is Facebook file hosting service. Always open file downloads in Transdesk.
           window.location.href = url;
         } else {
-          Ferdium.openNewWindow(url);
+          Transdesk.openNewWindow(url);
         }
       }
     },

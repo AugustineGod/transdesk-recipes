@@ -4,21 +4,21 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = (Ferdium, settings) => {
+module.exports = (Transdesk, settings) => {
   const getMessages = () => {
     // get new msg count
     let count = 0;
     const counters = document.querySelectorAll('[class*=FriendMessageCount]');
     Array.prototype.filter.call(counters, countValue => {
       if (countValue) {
-        count += Ferdium.safeParseInt(countValue.textContent);
+        count += Transdesk.safeParseInt(countValue.textContent);
       }
     });
 
     const indirectMessages = document.querySelectorAll(
       '[class*=ChatUnreadMessageIndicator]',
     ).length;
-    Ferdium.setBadge(count, indirectMessages);
+    Transdesk.setBadge(count, indirectMessages);
 
     // force scroll to bottom of chat window
     const chatBoxes = document.querySelectorAll('.chat_dialog');
@@ -34,11 +34,11 @@ module.exports = (Ferdium, settings) => {
     }
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 
-  // TODO: See how this can be moved into the main ferdium app and sent as an ipc message for opening with a new window or same Ferdium recipe's webview based on user's preferences
+  // TODO: See how this can be moved into the main transdesk app and sent as an ipc message for opening with a new window or same Transdesk recipe's webview based on user's preferences
   document.addEventListener(
     'click',
     event => {
@@ -56,7 +56,7 @@ module.exports = (Ferdium, settings) => {
         if (settings.trapLinkClicks === true) {
           window.location.href = url;
         } else {
-          Ferdium.openNewWindow(url);
+          Transdesk.openNewWindow(url);
         }
       }
     },

@@ -10,17 +10,17 @@ setInterval(() => {
   document.querySelector('.i0EQd').style.maxWidth = 'unset !important';
 }, 3000);
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const element = document.querySelector('a[href^="/direct/inbox"] span');
-    Ferdium.setBadge(
+    Transdesk.setBadge(
       element && element.textContent
-        ? Ferdium.safeParseInt(element.textContent)
+        ? Transdesk.safeParseInt(element.textContent)
         : 0,
     );
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

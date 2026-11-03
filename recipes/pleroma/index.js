@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class Pleroma extends Ferdium {
+module.exports = Transdesk =>
+  class Pleroma extends Transdesk {
     async validateUrl(url) {
       try {
         const resp = await window.fetch(`${url}/api/v1/instance`, {

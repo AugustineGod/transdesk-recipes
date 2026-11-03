@@ -1,8 +1,8 @@
-module.exports = Ferdium =>
-  class Planner extends Ferdium {
+module.exports = Transdesk =>
+  class Planner extends Transdesk {
     overrideUserAgent() {
       return window.navigator.userAgent
-        .replace(/(Ferdium|Electron)(\S+\s)/g, '')
+        .replace(/(Transdesk|Electron)(\S+\s)/g, '')
         .replace(/(Chrome\/)([^ ]*)/g, '$163.0.3239.84');
     }
 

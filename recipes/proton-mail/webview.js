@@ -4,21 +4,21 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     let unreadCount = 0;
     // Take the counter element from the "Inbox" folder
     for (const counterElement of document.querySelectorAll(
       '[data-testid="navigation-link:inbox"] [data-testid="navigation-link:unread-count"]',
     )) {
-      const unreadCounter = Ferdium.safeParseInt(counterElement.textContent);
+      const unreadCounter = Transdesk.safeParseInt(counterElement.textContent);
       unreadCount = Math.max(unreadCount, unreadCounter);
     }
 
-    Ferdium.setBadge(unreadCount);
+    Transdesk.setBadge(unreadCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

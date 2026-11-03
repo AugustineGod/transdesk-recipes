@@ -1,1 +1,1 @@
-module.exports = Ferdium => class SmartSheet extends Ferdium {};
+module.exports = Transdesk => class SmartSheet extends Transdesk {};

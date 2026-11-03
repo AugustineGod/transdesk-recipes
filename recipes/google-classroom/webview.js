@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   // if the user is on googleclassroom landing page, go to the login page.
   if (
     location.hostname === 'edu.google.com' &&
@@ -25,10 +25,10 @@ module.exports = Ferdium => {
         homework += upcomingAssignment[i].childElementCount;
       }
     }
-    Ferdium.setBadge(homework);
+    Transdesk.setBadge(homework);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

@@ -4,8 +4,8 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
-  Ferdium.handleDarkMode(isEnabled => {
+module.exports = Transdesk => {
+  Transdesk.handleDarkMode(isEnabled => {
     localStorage.setItem('theme', isEnabled ? 'midnight' : 'ice');
   });
 
@@ -17,17 +17,17 @@ module.exports = Ferdium => {
       'a[href="/notifications"]',
     ).nextSibling;
     if (notificationsElement) {
-      direct += Ferdium.safeParseInt(notificationsElement.textContent);
+      direct += Transdesk.safeParseInt(notificationsElement.textContent);
     }
     const DMElement = document.querySelector('a[href="/dms"]').nextSibling;
     if (DMElement) {
-      direct += Ferdium.safeParseInt(DMElement.textContent);
+      direct += Transdesk.safeParseInt(DMElement.textContent);
     }
 
-    Ferdium.setBadge(direct);
+    Transdesk.setBadge(direct);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

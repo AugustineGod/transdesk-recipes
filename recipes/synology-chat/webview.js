@@ -3,14 +3,14 @@ function _interopRequireDefault(obj) {
 }
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
-  Ferdium.handleDarkMode(isEnabled => {
+module.exports = Transdesk => {
+  Transdesk.handleDarkMode(isEnabled => {
     localStorage.setItem('theme', isEnabled ? 'dark' : 'light');
   });
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 
-  Ferdium.loop(() => {
+  Transdesk.loop(() => {
     const unreadElements = document.querySelectorAll(
       '.highlight, .highlight-mention',
     );
@@ -20,6 +20,6 @@ module.exports = Ferdium => {
       unreadCount = unreadElements.length;
     }
 
-    Ferdium.setBadge(unreadCount);
+    Transdesk.setBadge(unreadCount);
   });
 };

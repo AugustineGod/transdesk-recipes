@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getNotifications = function getNotifications() {
     let count = 0;
 
@@ -12,10 +12,10 @@ module.exports = Ferdium => {
       '.bp9cbjyn.bwm1u5wc.pq6dq46d.datstx6m.taijpn5t.jb3vyjys.jxrgncrl.qt6c0cv9.qnrpqo6b.k4urcfbm',
     );
     for (const element of queryList) {
-      count += Ferdium.safeParseInt(element.textContent);
+      count += Transdesk.safeParseInt(element.textContent);
     }
 
-    Ferdium.setBadge(count);
+    Transdesk.setBadge(count);
   };
 
   const getActiveDialogTitle = () => {
@@ -28,7 +28,7 @@ module.exports = Ferdium => {
       ),
     ].find(Boolean);
 
-    Ferdium.setDialogTitle(element ? element.textContent : null);
+    Transdesk.setDialogTitle(element ? element.textContent : null);
   };
 
   const loopFunc = () => {
@@ -36,7 +36,7 @@ module.exports = Ferdium => {
     getActiveDialogTitle();
   };
 
-  Ferdium.loop(loopFunc);
+  Transdesk.loop(loopFunc);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

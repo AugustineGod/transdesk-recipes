@@ -1,13 +1,13 @@
 (() => {
-  if (window.gotifyFerdiumBadgeInjected) {
+  if (window.gotifyTransdeskBadgeInjected) {
     return;
   }
 
-  window.gotifyFerdiumBadgeInjected = true;
+  window.gotifyTransdeskBadgeInjected = true;
 
   const sendBadge = count => {
     window.dispatchEvent(
-      new CustomEvent('gotify-ferdium-badge', {
+      new CustomEvent('gotify-transdesk-badge', {
         detail: { count },
       }),
     );
@@ -55,7 +55,7 @@
     return 0;
   };
 
-  window.addEventListener('gotify-ferdium-poll', () => {
+  window.addEventListener('gotify-transdesk-poll', () => {
     sendBadge(getLoadedMessageCount());
   });
 })();

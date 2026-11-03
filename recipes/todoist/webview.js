@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   function getTasks() {
     let todayCount = 0;
     let inboxCount = 0;
@@ -16,17 +16,17 @@ module.exports = Ferdium => {
     );
 
     if (todayElement) {
-      todayCount = Ferdium.safeParseInt(todayElement.textContent);
+      todayCount = Transdesk.safeParseInt(todayElement.textContent);
     }
 
     if (inboxElement) {
-      inboxCount = Ferdium.safeParseInt(inboxElement.textContent);
+      inboxCount = Transdesk.safeParseInt(inboxElement.textContent);
     }
 
-    Ferdium.setBadge(todayCount, inboxCount);
+    Transdesk.setBadge(todayCount, inboxCount);
   }
 
-  Ferdium.loop(getTasks);
+  Transdesk.loop(getTasks);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

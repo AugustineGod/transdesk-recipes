@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class Nextcloud extends Ferdium {
+module.exports = Transdesk =>
+  class Nextcloud extends Transdesk {
     buildUrl(url) {
       return `${url}/`;
     }

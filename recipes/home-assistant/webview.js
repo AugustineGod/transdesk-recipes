@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const badges = document
       .querySelector('home-assistant')
@@ -12,15 +12,15 @@ module.exports = Ferdium => {
       .shadowRoot.querySelector('ha-sidebar')
       .shadowRoot.querySelectorAll('.notification-badge');
     if (badges.length > 0) {
-      const count = Ferdium.safeParseInt(
+      const count = Transdesk.safeParseInt(
         badges[0].textContent.replaceAll(/[^\p{N}]/gu, ''),
       );
-      Ferdium.setBadge(count);
+      Transdesk.setBadge(count);
     } else {
-      Ferdium.setBadge(0);
+      Transdesk.setBadge(0);
     }
   };
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

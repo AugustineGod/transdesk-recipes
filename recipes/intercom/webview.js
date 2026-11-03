@@ -4,17 +4,17 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
-    const numMessages = Ferdium.safeParseInt(
+    const numMessages = Transdesk.safeParseInt(
       document.querySelector(
         '.left-nav [data-content="Inbox"] .unread__container .unread',
       ).textContent,
     );
-    Ferdium.setBadge(numMessages);
+    Transdesk.setBadge(numMessages);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

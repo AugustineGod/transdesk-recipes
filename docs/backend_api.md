@@ -1,8 +1,8 @@
 # Backend API
 
-Provides a set of helper functions to integrate the recipe into [Ferdium](https://ferdium.org).
+Provides a set of helper functions to integrate the recipe into [Transdesk](https://transdesk.org).
 
-## Ferdium Backend Class Methods
+## Transdesk Backend Class Methods
 
 * [validateUrl](#validateurl)
 * [overrideUserAgent](#overrideuseragent)
@@ -29,7 +29,7 @@ Validate if the given URL is a valid service instance.
 
 ```js
 // RocketChat integration
-module.exports = Ferdium => class RocketChat extends Ferdium {
+module.exports = Transdesk => class RocketChat extends Transdesk {
   async validateUrl(url) {
     try {
       const resp = await window.fetch(`${url}/api/info`, {
@@ -61,11 +61,11 @@ Override the user agent used inside the service webview.
 #### Usage
 
 ```js
-module.exports = Ferdium => class Discord extends Ferdium {
+module.exports = Transdesk => class Discord extends Transdesk {
   overrideUserAgent() {
-    // Remove Ferdium's signature from the user agent
+    // Remove Transdesk's signature from the user agent
     return window.navigator.userAgent.replace(
-    /(Ferdium|Electron)\/\S+ \([^)]+\)/g,
+    /(Transdesk|Electron)\/\S+ \([^)]+\)/g,
     ""
   );
   }
@@ -73,7 +73,7 @@ module.exports = Ferdium => class Discord extends Ferdium {
 ```
 
 ```js
-module.exports = Ferdium => class Example extends Ferdium {
+module.exports = Transdesk => class Example extends Transdesk {
   overrideUserAgent() {
     // Use a completely different user agent
     return "Mozilla/2.02Gold (Win95; I)";
@@ -98,7 +98,7 @@ Valid URL patterns can be referred from [here](https://www.electronjs.org/docs/a
 
 ```js
 // Hangouts Chat integration
-module.exports = Ferdium => class HangoutsChat extends Ferdium {
+module.exports = Transdesk => class HangoutsChat extends Transdesk {
     modifyRequestHeaders() {
       return [{
         // Adding an origin header for all http requests from this recipe
@@ -123,7 +123,7 @@ Specify an array of known hosts from where certificates can be issued for this s
 
 ```js
 // msteams Chat integration
-module.exports = Ferdium => class MicrosoftTeams extends Ferdium {
+module.exports = Transdesk => class MicrosoftTeams extends Transdesk {
   knownCertificateHosts() {
     return [
       'aka.ms',
@@ -152,14 +152,14 @@ module.exports = Ferdium => class MicrosoftTeams extends Ferdium {
 
 ### Events
 
-Ferdium recipes can hook into the [electron webview events](https://electron.atom.io/docs/api/webview-tag/#dom-events) to trigger custom functions.
+Transdesk recipes can hook into the [electron webview events](https://electron.atom.io/docs/api/webview-tag/#dom-events) to trigger custom functions.
 
 This is necessary for services like TweetDeck where custom URL forwarding is needed during login.
 
 #### Usage
 
 ```js
-module.exports = Ferdium => class Tweetdeck extends Ferdium {
+module.exports = Transdesk => class Tweetdeck extends Transdesk {
   events = {
     'did-get-redirect-request': '_redirectFix',
   }

@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class CustomWebsite extends Ferdium {
+module.exports = Transdesk =>
+  class CustomWebsite extends Transdesk {
     async validateUrl() {
       return true;
     }

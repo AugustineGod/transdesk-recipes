@@ -6,7 +6,7 @@ function isVisible(el) {
   }
 }
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const selectors = [
     '.notification-count',
     '.notif-count',
@@ -17,7 +17,7 @@ module.exports = Ferdium => {
     '#notifications .count',
   ];
 
-  const safeInt = v => Ferdium.safeParseInt(v || 0);
+  const safeInt = v => Transdesk.safeParseInt(v || 0);
 
   const getMessages = () => {
     let direct = 0;
@@ -59,12 +59,12 @@ module.exports = Ferdium => {
       if (titleMatch) direct = safeInt(titleMatch[1]);
     }
 
-    Ferdium.setBadge(direct, indirect);
+    Transdesk.setBadge(direct, indirect);
   };
 
   const getActiveDialogTitle = () => {
     const el = document.querySelector('h1, .title, .chat-title');
-    Ferdium.setDialogTitle(el ? el.textContent.trim() : '');
+    Transdesk.setDialogTitle(el ? el.textContent.trim() : '');
   };
 
   const loopFunc = () => {
@@ -76,5 +76,5 @@ module.exports = Ferdium => {
     }
   };
 
-  Ferdium.loop(loopFunc);
+  Transdesk.loop(loopFunc);
 };

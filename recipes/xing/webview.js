@@ -4,14 +4,14 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   function getUnreadConversations() {
-    Ferdium.setBadge(
+    Transdesk.setBadge(
       document.querySelector('#unread-conversations').textContent,
     );
   }
 
-  Ferdium.loop(getUnreadConversations);
+  Transdesk.loop(getUnreadConversations);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

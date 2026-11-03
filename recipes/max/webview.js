@@ -1,4 +1,4 @@
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   document.addEventListener(
     'click',
     event => {
@@ -16,8 +16,8 @@ module.exports = Ferdium => {
           try {
             window.open(url, '_blank', 'noreferrer');
           } catch {
-            if (typeof Ferdium.openNewWindow === 'function') {
-              Ferdium.openNewWindow(url);
+            if (typeof Transdesk.openNewWindow === 'function') {
+              Transdesk.openNewWindow(url);
             }
           }
         }

@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = (Ferdium, settings) => {
+module.exports = (Transdesk, settings) => {
   const getMessages = () => {
     let directCount = 0;
     const directCountPerServer = document.querySelectorAll(
@@ -12,21 +12,21 @@ module.exports = (Ferdium, settings) => {
     );
 
     for (const directCountBadge of directCountPerServer) {
-      directCount += Ferdium.safeParseInt(directCountBadge.textContent);
+      directCount += Transdesk.safeParseInt(directCountBadge.textContent);
     }
 
     const indirectCountPerServer = document.querySelectorAll(
       '[class*="modeUnread-"]',
     ).length;
 
-    Ferdium.setBadge(directCount, indirectCountPerServer);
+    Transdesk.setBadge(directCount, indirectCountPerServer);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 
-  // TODO: See how this can be moved into the main ferdium app and sent as an ipc message for opening with a new window or same Ferdium recipe's webview based on user's preferences
+  // TODO: See how this can be moved into the main transdesk app and sent as an ipc message for opening with a new window or same Transdesk recipe's webview based on user's preferences
   document.addEventListener(
     'click',
     event => {
@@ -38,14 +38,14 @@ module.exports = (Ferdium, settings) => {
           ? link.getAttribute('href')
           : button.getAttribute('title');
 
-        if (!Ferdium.isImage(link)) {
+        if (!Transdesk.isImage(link)) {
           event.preventDefault();
           event.stopPropagation();
 
           if (settings.trapLinkClicks === true) {
             window.location.href = url;
           } else {
-            Ferdium.openNewWindow(url);
+            Transdesk.openNewWindow(url);
           }
         }
       }

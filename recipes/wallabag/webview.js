@@ -4,14 +4,14 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   function getUnreadEntries() {
     const element = document.querySelector(
       'a[href="/unread/list"]>span.items-number',
     );
     if (element) {
-      const parsedValue = Ferdium.safeParseInt(element.textContent);
-      Ferdium.setBadge(parsedValue);
+      const parsedValue = Transdesk.safeParseInt(element.textContent);
+      Transdesk.setBadge(parsedValue);
     }
   }
 
@@ -19,7 +19,7 @@ module.exports = Ferdium => {
     getUnreadEntries();
   };
 
-  Ferdium.loop(loopFunc);
+  Transdesk.loop(loopFunc);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

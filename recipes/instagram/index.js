@@ -1,12 +1,12 @@
-module.exports = Ferdium =>
-  class Instagram extends Ferdium {
+module.exports = Transdesk =>
+  class Instagram extends Transdesk {
     overrideUserAgent() {
       return window.navigator.userAgent
         .replace(
           /\(Macintosh; Apple macOS [^)]+\)/,
           '(Macintosh; Intel Mac OS X 10_15_7)',
         )
-        .replace(/\b(?:Ferdium|Electron)\/\S+/g, '')
+        .replace(/\b(?:Transdesk|Electron)\/\S+/g, '')
         .replace(/\s{2,}/g, ' ')
         .trim();
     }

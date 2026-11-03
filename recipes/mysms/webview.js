@@ -4,14 +4,14 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const elements = document.querySelectorAll('.unread');
 
     let count = 0;
     for (const element of elements) {
       if (
-        Ferdium.safeParseInt(
+        Transdesk.safeParseInt(
           element.textContent && element.textContent.replaceAll(/[^\d.]/g, ''),
         ) > 0
       ) {
@@ -19,10 +19,10 @@ module.exports = Ferdium => {
       }
     }
 
-    Ferdium.setBadge(count);
+    Transdesk.setBadge(count);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

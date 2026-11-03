@@ -1,5 +1,5 @@
-module.exports = Ferdium =>
-  class Zulip extends Ferdium {
+module.exports = Transdesk =>
+  class Zulip extends Transdesk {
     async validateUrl(url) {
       const baseUrl = new window.URL(url);
       const apiVersion = 'api/v1';

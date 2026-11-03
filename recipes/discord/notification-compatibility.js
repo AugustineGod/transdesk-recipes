@@ -10,7 +10,7 @@ const captureRuntimes = () => {
   captureCount += 1;
   // Discord chains private Rspack runtimes. Match exports, not module IDs.
   chunks.push([
-    [`ferdium-notification-compatibility-${Date.now()}-${captureCount}`],
+    [`transdesk-notification-compatibility-${Date.now()}-${captureCount}`],
     {},
     require => {
       if (!runtimes.includes(require)) runtimes.push(require);
@@ -52,7 +52,7 @@ const enableNotifications = () => {
   const store = findNotificationSettingsStore();
   if (!store) return false;
 
-  // Discord defaults to NEVER without DiscordNative and returns before Ferdium's Notification shim.
+  // Discord defaults to NEVER without DiscordNative and returns before Transdesk's Notification shim.
   const state = store.getUserAgnosticState();
   if (store.getDesktopType() === 'NEVER' && state?.desktopType === 'NEVER') {
     state.desktopType = 'ALL';

@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     const unreadText =
       document
@@ -15,9 +15,9 @@ module.exports = Ferdium => {
 
     const unreadCount = Number.parseInt(unreadText.replace(/\D/g, ''), 10) || 0;
 
-    Ferdium.setBadge(unreadCount, 0);
+    Transdesk.setBadge(unreadCount, 0);
   };
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

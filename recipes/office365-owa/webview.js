@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = (Ferdium, settings) => {
+module.exports = (Transdesk, settings) => {
   const collectCounts = selector => {
     let unreadCount = 0;
     const foldersElement = document.querySelector(selector);
@@ -14,7 +14,7 @@ module.exports = (Ferdium, settings) => {
       );
       for (const child of allScreenReaders) {
         if (child.previousSibling) {
-          unreadCount += Ferdium.safeParseInt(
+          unreadCount += Transdesk.safeParseInt(
             child.previousSibling.textContent,
           );
         }
@@ -24,7 +24,7 @@ module.exports = (Ferdium, settings) => {
   };
 
   // adapted from the franz-custom-website recipe, for opening
-  // links according to  the user's preference (Ferdium/ext.browser)
+  // links according to  the user's preference (Transdesk/ext.browser)
   document.addEventListener(
     'click',
     event => {
@@ -34,7 +34,7 @@ module.exports = (Ferdium, settings) => {
       }
       const link = targetElement.closest('a[href]');
 
-      if (!link || Ferdium.isImage(link)) {
+      if (!link || Transdesk.isImage(link)) {
         return;
       }
 
@@ -67,7 +67,7 @@ module.exports = (Ferdium, settings) => {
       if (settings.trapLinkClicks === true) {
         window.location.href = parsedUrl.toString();
       } else {
-        Ferdium.openNewWindow(parsedUrl.toString());
+        Transdesk.openNewWindow(parsedUrl.toString());
       }
     },
     true,
@@ -78,7 +78,7 @@ module.exports = (Ferdium, settings) => {
     let indirectUnreadCount = 0;
     if (/\/owa/.test(location.pathname)) {
       // classic app
-      directUnreadCount = Ferdium.safeParseInt(
+      directUnreadCount = Transdesk.safeParseInt(
         document.querySelectorAll("span[title*='Inbox'] + div > span")[0]
           ?.textContent,
       );
@@ -94,9 +94,9 @@ module.exports = (Ferdium, settings) => {
             indirectUnreadCount;
     }
 
-    Ferdium.setBadge(directUnreadCount, indirectUnreadCount);
+    Transdesk.setBadge(directUnreadCount, indirectUnreadCount);
   };
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

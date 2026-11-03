@@ -4,19 +4,19 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   // TODO: If your Notion Mail service has unread messages, uncomment these lines to implement the logic for updating the badges
   const getMessages = () => {
     let inboxCount = 0;
     inboxCount = document.querySelectorAll('.jnEPWk')[0]
-      ? Ferdium.safeParseInt(
+      ? Transdesk.safeParseInt(
           document.querySelectorAll('.jnEPWk')[0].textContent,
         )
       : 0;
 
-    Ferdium.setBadge(inboxCount, 0);
+    Transdesk.setBadge(inboxCount, 0);
   };
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

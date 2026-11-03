@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   function getTasks() {
     let incompleteCount = 0;
 
@@ -14,14 +14,14 @@ module.exports = Ferdium => {
 
     if (countEls.length > 0) {
       for (const el of countEls) {
-        incompleteCount += Ferdium.safeParseInt(el.textContent);
+        incompleteCount += Transdesk.safeParseInt(el.textContent);
       }
     }
 
-    Ferdium.setBadge(incompleteCount);
+    Transdesk.setBadge(incompleteCount);
   }
 
-  Ferdium.loop(getTasks);
+  Transdesk.loop(getTasks);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

@@ -19,14 +19,14 @@ setTimeout(() => {
   }
 }, 1000);
 
-module.exports = (Ferdium, settings) => {
+module.exports = (Transdesk, settings) => {
   const getMessages = () => {
     const messages = document.querySelectorAll('.text-content.unread').length;
-    Ferdium.setBadge(messages);
+    Transdesk.setBadge(messages);
   };
 
   window.addEventListener('beforeunload', async () => {
-    Ferdium.clearStorageData(settings.id, {
+    Transdesk.clearStorageData(settings.id, {
       storages: [
         'appcache',
         'serviceworkers',
@@ -35,10 +35,10 @@ module.exports = (Ferdium, settings) => {
         'indexdb',
       ],
     });
-    Ferdium.releaseServiceWorkers();
+    Transdesk.releaseServiceWorkers();
   });
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
   if (settings.isDarkModeEnabled) {
     localStorage.setItem('dark_mode_enabled', 'true');
@@ -46,5 +46,5 @@ module.exports = (Ferdium, settings) => {
     localStorage.setItem('dark_mode_enabled', 'false');
   }
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

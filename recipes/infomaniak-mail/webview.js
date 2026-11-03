@@ -4,14 +4,14 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const getMessages = () => {
     // This selects the first folder (the inbox and reads its unread messages count)
     const inboxField = document.querySelector('.ws-tree-node-content');
     const inboxCountField = inboxField.querySelector('.ws-tree-node-badge');
     const inboxCountText = inboxCountField ? inboxCountField.textContent : null;
     const inboxCount = inboxCountText
-      ? Ferdium.safeParseInt(inboxCountText)
+      ? Transdesk.safeParseInt(inboxCountText)
       : 0;
 
     let unimportantCount = 0;
@@ -24,14 +24,14 @@ module.exports = Ferdium => {
         ? totalCountField.textContent
         : null;
       unimportantCount = totalCountText
-        ? Ferdium.safeParseInt(totalCountText)
+        ? Transdesk.safeParseInt(totalCountText)
         : 0;
     }
 
-    Ferdium.setBadge(inboxCount, unimportantCount);
+    Transdesk.setBadge(inboxCount, unimportantCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

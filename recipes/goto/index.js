@@ -1,1 +1,1 @@
-module.exports = Ferdium => class GoTo extends Ferdium {};
+module.exports = Transdesk => class GoTo extends Transdesk {};

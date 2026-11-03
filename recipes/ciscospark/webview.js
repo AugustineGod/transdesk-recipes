@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = Ferdium => {
+module.exports = Transdesk => {
   const UNREAD_BADGE_SELECTOR = '.navigation-item--badgeCount';
 
   const getMessages = () => {
@@ -18,7 +18,7 @@ module.exports = Ferdium => {
       elements.length > 0 &&
       elements[1].querySelector(UNREAD_BADGE_SELECTOR)
     ) {
-      directCount = Ferdium.safeParseInt(
+      directCount = Transdesk.safeParseInt(
         elements[1].querySelector(UNREAD_BADGE_SELECTOR).textContent,
       );
     }
@@ -26,15 +26,15 @@ module.exports = Ferdium => {
       elements.length > 1 &&
       elements[2].querySelector(UNREAD_BADGE_SELECTOR)
     ) {
-      indirectCount = Ferdium.safeParseInt(
+      indirectCount = Transdesk.safeParseInt(
         elements[2].querySelector(UNREAD_BADGE_SELECTOR).textContent,
       );
     }
 
-    Ferdium.setBadge(directCount, indirectCount);
+    Transdesk.setBadge(directCount, indirectCount);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

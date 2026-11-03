@@ -1,8 +1,8 @@
-module.exports = Ferdium =>
-  class Jitsi extends Ferdium {
+module.exports = Transdesk =>
+  class Jitsi extends Transdesk {
     overrideUserAgent() {
       return window.navigator.userAgent
-        .replaceAll(/(Ferdium|Electron)\/\S+ \([^)]+\)/g, '')
+        .replaceAll(/(Transdesk|Electron)\/\S+ \([^)]+\)/g, '')
         .trim();
     }
   };

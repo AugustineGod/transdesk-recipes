@@ -4,7 +4,7 @@ function _interopRequireDefault(obj) {
 
 const _path = _interopRequireDefault(require('path'));
 
-module.exports = (Ferdium, settings) => {
+module.exports = (Transdesk, settings) => {
   const getMessages = () => {
     let directCount = 0;
     const directCountPerServer = document.querySelectorAll(
@@ -12,23 +12,23 @@ module.exports = (Ferdium, settings) => {
     );
 
     for (const directCountBadge of directCountPerServer) {
-      directCount += Ferdium.safeParseInt(directCountBadge.textContent);
+      directCount += Transdesk.safeParseInt(directCountBadge.textContent);
     }
 
     const indirectCountPerServer =
       document.title.search('• Discord') === -1 ? 0 : 1;
 
-    Ferdium.setBadge(directCount, indirectCountPerServer);
+    Transdesk.setBadge(directCount, indirectCountPerServer);
   };
 
-  Ferdium.loop(getMessages);
+  Transdesk.loop(getMessages);
 
-  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
-  Ferdium.injectJSUnsafe(
+  Transdesk.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Transdesk.injectJSUnsafe(
     _path.default.join(__dirname, 'notification-compatibility.js'),
   );
 
-  // TODO: See how this can be moved into the main ferdium app and sent as an ipc message for opening with a new window or same Ferdium recipe's webview based on user's preferences
+  // TODO: See how this can be moved into the main transdesk app and sent as an ipc message for opening with a new window or same Transdesk recipe's webview based on user's preferences
   document.addEventListener(
     'click',
     event => {
@@ -50,18 +50,18 @@ module.exports = (Ferdium, settings) => {
           return !stayInsideDiscord;
         });
 
-        if (!Ferdium.isImage(link) && !stayInsideDiscord) {
+        if (!Transdesk.isImage(link) && !stayInsideDiscord) {
           event.preventDefault();
           event.stopPropagation();
 
           if (
-            // Always open file downloads in Ferdium, rather than the external browser
+            // Always open file downloads in Transdesk, rather than the external browser
             url.includes('discordapp.com/attachments/') ||
             settings.trapLinkClicks === true
           ) {
             window.location.href = url;
           } else {
-            Ferdium.openNewWindow(url);
+            Transdesk.openNewWindow(url);
           }
         }
       }
