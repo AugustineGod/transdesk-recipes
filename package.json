@@ -5,11 +5,11 @@
     "doc": "docs"
   },
   "engines": {
-    "node": "24.22.1",
+    "node": "24.22.0",
     "pnpm": "12.15.0"
   },
   "volta": {
-    "node": "24.22.1",
+    "node": "24.22.0",
     "pnpm": "12.15.0"
   },
   "engine-strict": true,
