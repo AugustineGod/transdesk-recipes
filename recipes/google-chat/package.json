@@ -1,0 +1,14 @@
+{
+  "id": "google-chat",
+  "name": "Google Chat",
+  "version": "1.8.4",
+  "license": "MIT",
+  "aliases": [
+    "google-chat"
+  ],
+  "config": {
+    "serviceURL": "https://chat.google.com",
+    "hasNotificationSound": true,
+    "hasIndirectMessages": true
+  }
+}

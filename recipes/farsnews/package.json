@@ -1,9 +1,0 @@
-{
-  "id": "farsnews",
-  "name": "FarsNews",
-  "version": "1.0.0",
-  "license": "MIT",
-  "config": {
-    "serviceURL": "https://farsnews.ir/"
-  }
-}

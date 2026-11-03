@@ -1,9 +1,0 @@
-{
-  "id": "nazdika",
-  "name": "Nazdika",
-  "version": "1.0.0",
-  "license": "MIT",
-  "config": {
-    "serviceURL": "https://app.nazdika.com/"
-  }
-}
